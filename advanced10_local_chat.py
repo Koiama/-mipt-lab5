@@ -102,6 +102,8 @@ class ChatServer:
                     chunk = client.recv(4096)
                 except socket.timeout:
                     continue
+                except OSError:
+                    break
                 if not chunk:
                     break
                 buffer += chunk
